@@ -1,25 +1,11 @@
-En esta actualización de la página index.html de Recruit Partner se han realizado cambios significativos orientados a mejorar la presentación, estructura y experiencia de usuario del sitio web. A continuación, se describen los principales cambios:
+En esta actualización se han realizado mejoras visuales y de experiencia de usuario enfocadas en la navegación móvil y la sección de testimonios:
 
-1. **Mejoras en la cabecera y navegación:**
-   - Se añadió el logo de la empresa en la barra de navegación y se incorporó una nueva fuente desde Google Fonts para mejorar la estética.
-   - Se agregó un enlace directo a la sección "Equipo" en el menú de navegación, facilitando el acceso a la información sobre los miembros del equipo.
+1. **Menú móvil animado y centrado:**
+   - El menú de navegación en celulares ahora aparece centrado con una animación llamativa que parte desde el ícono de hamburguesa, escalando y desvaneciéndose suavemente.
+   - Se añadió un overlay translúcido y difuminado (blur) que cubre el fondo cuando el menú está activo, bloqueando el scroll de la página y enfocando la atención en el menú. Solo el fondo se difumina, el menú y la barra de navegación permanecen nítidos.
+   - El overlay se puede tocar para cerrar el menú de forma intuitiva.
 
-2. **Sección Hero renovada:**
-   - Se reestructuró la sección principal (hero) para incluir una insignia destacando la agencia y una frase inspiradora con elementos visuales y de animación.
-   - Se añadieron íconos y frases resaltadas que refuerzan los valores diferenciales de la empresa: mejor, más rápido y con respaldo profesional.
+2. **Animación sutil en testimonios:**
+   - Las tarjetas de testimonios ahora muestran una animación de entrada y salida mucho más suave y cómoda: se desvanecen y se desplazan levemente hacia arriba, evitando movimientos bruscos o fatigosos para el usuario.
 
-3. **Valores y servicios:**
-   - En la sección de valores, se añadió el valor "Adaptabilidad", enfatizando la capacidad de la empresa para ajustarse a las necesidades de cada cliente.
-   - En la sección de servicios, se comentaron (desactivaron) las listas de características específicas de cada servicio, probablemente para simplificar la visualización o por estar en revisión.
-
-4. **Nueva sección de equipo:**
-   - Se incorporó una sección completamente nueva llamada "Nuestro equipo", donde se presentan dos miembros clave con sus fotos, roles, descripciones profesionales y habilidades principales. Esto aporta transparencia y cercanía a los visitantes.
-
-5. **Testimonios actualizados:**
-   - Se actualizaron los testimonios de clientes, cambiando nombres, cargos y empresas para reflejar experiencias más relevantes y reales. Se eliminaron los avatares genéricos y se mejoró la presentación de los autores.
-
-6. **Footer y contacto:**
-   - Se reorganizó la sección de contacto y el pie de página, agrupando ambos en un contenedor común. Se actualizaron los datos de contacto (correo, teléfonos y ubicación) y se añadieron enlaces a redes sociales más relevantes (LinkedIn, TikTok, Instagram).
-   - Se actualizó el año de copyright a 2025.
-
-En resumen, estos cambios aportan una imagen más profesional, moderna y cercana de Recruit Partner, mejorando la navegación, la presentación del equipo y la confianza de los potenciales clientes.
+Estas mejoras aportan una experiencia más moderna, fluida y agradable tanto en la navegación como en la visualización de testimonios en dispositivos móviles y escritorio.

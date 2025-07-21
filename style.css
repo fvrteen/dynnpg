@@ -42,7 +42,6 @@ body {
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
     z-index: 1000;
     transition: var(--transition);
     border-bottom: 1px solid rgba(18, 55, 103, 0.1);
@@ -116,18 +115,44 @@ body {
     width: 100%;
 }
 
+/* --- Enhanced Hamburger Animation --- */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1100;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 4px 24px 0 rgba(18,55,103,0.10);
+    transition: box-shadow 0.3s, background 0.3s, transform 0.15s;
+    backdrop-filter: blur(8px);
 }
-
+.hamburger:active {
+    transform: scale(0.93);
+    box-shadow: 0 2px 8px 0 rgba(18,55,103,0.12);
+}
 .bar {
-    width: 25px;
-    height: 3px;
+    width: 26px;
+    height: 3.5px;
     background: var(--primary-navy);
-    margin: 3px 0;
-    transition: var(--transition);
+    margin: 3.5px 0;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 1px 4px rgba(18,55,103,0.08);
+}
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.5);
+}
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -858,14 +883,35 @@ section {
 .testimonial-card {
     display: none;
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(15px) scale(0.98);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: testimonial-exit 0.7s cubic-bezier(0.4,0,0.2,1) both;
 }
-
 .testimonial-card.active {
     display: block;
     opacity: 1;
     transform: translateY(0) scale(1);
+    animation: testimonial-enter 0.8s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes testimonial-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@keyframes testimonial-exit {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
 }
 
 .testimonial-content {
@@ -1183,36 +1229,84 @@ section {
 
     .nav-menu {
         position: fixed;
-        left: -100%;
+        left: 50%;
         top: 70px;
+        right: auto;
+        transform: translate(-50%, -30px) scale(0.7);
         flex-direction: column;
-        background-color: var(--white);
-        width: 100%;
+        background: rgba(255,255,255,0.95);
+        width: 90vw;
+        max-width: 340px;
         text-align: center;
-        transition: 0.3s;
-        box-shadow: var(--shadow-medium);
-        padding: 2rem 0;
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s cubic-bezier(0.4,0,0.2,1);
+        box-shadow: 0 8px 32px 0 rgba(18,55,103,0.13);
+        padding: 2.5rem 0 2rem 0;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        z-index: 1050;
+        opacity: 0;
+        pointer-events: none;
+        transform-origin: 90% 0%; /* top right, near burger */
     }
-
     .nav-menu.active {
-        left: 0;
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .nav-menu:not(.active) {
+        transform: translateX(110%);
+        opacity: 0.7;
+        pointer-events: none;
     }
 
     .nav-menu li {
-        margin: 1rem 0;
-    }
-    
-    .nav-logo img {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .nav-logo h2 {
-        font-size: 1.1rem;
+        margin: 1.2rem 0;
     }
     
     .nav-container {
-        padding: 0 15px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+        padding: 0 10px;
+    }
+    .nav-logo {
+        position: static;
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+    .nav-logo img {
+        width: 74vh;
+        height: 80vh;
+        margin: 0;
+        display: block;
+    }
+    .nav-title-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.35rem;
+        text-align: center;
+        color: var(--primary-navy);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        line-height: 1.1;
+        z-index: 10;
+        background: transparent;
+        padding: 0 10px;
+        width: max-content;
+        pointer-events: none;
+        margin: 0;
+    }
+    .hamburger {
+        z-index: 20;
+        flex: 0 0 auto;
     }
 
     .services-grid {
@@ -1604,5 +1698,39 @@ html {
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    body.menu-open {
+        overflow: hidden !important;
+        height: 100vh;
+        position: relative;
+    }
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(40, 60, 90, 0.18);
+        backdrop-filter: blur(2px);
+        z-index: 1040;
+        transition: opacity 0.25s cubic-bezier(0.4,0,0.2,1), backdrop-filter 0.35s cubic-bezier(0.4,0,0.2,1);
+        opacity: 0;
+    }
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    .nav-menu {
+        z-index: 1051;
+        /* Remove backdrop-filter if present */
+        background: rgba(255,255,255,0.95);
+        /* No backdrop-filter here */
+    }
+    .navbar {
+        z-index: 1052;
     }
 }

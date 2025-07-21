@@ -3,11 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     const navbar = document.getElementById('navbar');
+    const overlay = document.querySelector('.nav-overlay');
 
     // Mobile menu toggle
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        if (navMenu.classList.contains('active')) {
+            overlay.classList.add('active');
+            document.body.classList.add('menu-open');
+        } else {
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
     });
 
     // Close mobile menu when clicking on a link
@@ -15,7 +23,17 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
         });
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
     });
 
     // Navbar scroll effect
