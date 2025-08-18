@@ -164,4 +164,69 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // --- Navbar auto-hide on scroll (mobile) ---
+    let lastScrollY = window.scrollY;
+    let navbarHidden = false;
+    function handleNavbarAutoHide() {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) {
+            navbar.style.top = '0';
+            return;
+        }
+        if (window.scrollY > lastScrollY && window.scrollY > 80) {
+            // Scrolling down
+            if (!navbarHidden) {
+                navbar.style.top = '-80px';
+                navbarHidden = true;
+            }
+        } else {
+            // Scrolling up
+            if (navbarHidden || window.scrollY < 80) {
+                navbar.style.top = '0';
+                navbarHidden = false;
+            }
+        }
+        lastScrollY = window.scrollY;
+    }
+    window.addEventListener('scroll', handleNavbarAutoHide);
+    window.addEventListener('resize', handleNavbarAutoHide);
+    // --- End Navbar auto-hide ---
+
+    // --- Swipe gesture for testimonials carousel (mobile) ---
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const carousel = document.getElementById('testimonials-carousel');
+    if (carousel && window.innerWidth <= 768) {
+        carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        carousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipeGesture();
+        });
+        function handleSwipeGesture() {
+            if (touchEndX < touchStartX - 40) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 40) {
+                prevSlide();
+            }
+        }
+    }
+    // --- End Swipe gesture ---
+
+    // --- Hide WhatsApp FAB on desktop ---
+    function toggleFabVisibility() {
+        const fab = document.getElementById('fab-whatsapp');
+        if (!fab) return;
+        if (window.innerWidth > 768) {
+            fab.style.display = 'none';
+        } else {
+            fab.style.display = 'flex';
+        }
+    }
+    window.addEventListener('resize', toggleFabVisibility);
+    toggleFabVisibility();
+    // --- End FAB visibility ---
 }); 

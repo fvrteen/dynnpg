@@ -1,0 +1,92 @@
+<!-- ✅ list.html (Lista de Niñeras con Sidebar Pro + Zoom Popup) -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lista de Niñeras</title>
+  <link href="https://unpkg.com/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar sexy -->
+  <!-- <div class="sidebar">
+    <h1>Niñeras</h1>
+    <a href="add.html">➕ Agregar Niñera</a>
+    <a href="list.html">📋 Ver Niñeras</a>
+  </div> -->
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h2 class="mb-4">Lista de Niñeras</h2>
+    <table class="table table-striped" id="nannyTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Foto</th>
+          <th>Edad</th>
+          <th>Habilidades</th>
+          <th>Disponibilidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Las filas de niñeras se cargarán aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Popup ampliado -->
+  <div class="popup-bg" id="popup">
+    <div class="popup-content">
+      <button class="popup-close" id="closePopup">&times;</button>
+      <img src="" alt="ampliada" class="popup-img" id="popupImg">
+    </div>
+  </div>
+
+  <script>
+    const tbody = document.querySelector('#nannyTable tbody');
+    const nannies = JSON.parse(localStorage.getItem('nannies') || '[]');
+    nannies.forEach(nanny => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${nanny.name}</td>
+        <td><img src="${nanny.photo}" alt="foto" class="nanny-photo" style="width:60px; height:60px; object-fit:cover; border-radius:8px"/></td>
+        <td>${nanny.age}</td>
+        <td>${nanny.skills}</td>
+        <td>${nanny.availability}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
+
+  <script>
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popupImg');
+    const closeBtn = document.getElementById('closePopup');
+
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('nanny-photo')) {
+        popupImg.src = e.target.src;
+        popup.classList.add('active');
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.classList.add('fade-out');
+      setTimeout(() => {
+        popup.classList.remove('active', 'fade-out');
+        popupImg.src = '';
+      }, 300);
+    });
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        closeBtn.click();
+      }
+    });
+  </script>
+</body>
+</html>

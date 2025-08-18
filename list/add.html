@@ -1,0 +1,81 @@
+<!-- ✅ add.html (Formulario para Agregar Niñera con Sidebar Pro) -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agregar Niñera</title>
+  <link href="https://unpkg.com/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  <!-- Sidebar sexy -->
+  <!-- <div class="sidebar">
+    <!-- <h1>Niñeras</h1>
+    <a href="add.html">➕ Agregar Niñera</a>
+    <a href="list.html">📋 Ver Niñeras</a>
+  </div> -->
+
+  <!-- Main content -->
+  <div class="main-content">
+    <h2 class="mb-4">Agregar Nueva Niñera</h2>
+    <form id="nannyForm">
+      <div class="mb-3">
+        <label class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" id="name" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Edad</label>
+        <input type="number" class="form-control" id="age" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Habilidades</label>
+        <input type="text" class="form-control" id="skills" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Disponibilidad</label>
+        <select class="form-select" id="availability" required>
+          <option value="Disponible">Disponible</option>
+          <option value="No disponible">No disponible</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Foto</label>
+        <input type="file" class="form-control" id="photo" accept="image/*" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Niñera</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('nannyForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const reader = new FileReader();
+      const file = document.getElementById('photo').files[0];
+
+      reader.onloadend = () => {
+        const nanny = {
+          name: document.getElementById('name').value,
+          age: document.getElementById('age').value,
+          skills: document.getElementById('skills').value,
+          availability: document.getElementById('availability').value,
+          photo: reader.result
+        };
+
+        const existing = JSON.parse(localStorage.getItem('nannies') || '[]');
+        existing.push(nanny);
+        localStorage.setItem('nannies', JSON.stringify(existing));
+
+        alert('Niñera guardada exitosamente');
+        form.reset();
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
