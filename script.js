@@ -216,6 +216,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // --- End Swipe gesture ---
 
+    // --- LinkedIn Links - Web on PC, App on Mobile ---
+    function handleLinkedInLinks() {
+        const linkedinLinks = document.querySelectorAll('.linkedin-link');
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        linkedinLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const profileId = this.getAttribute('data-profile');
+                
+                if (isMobile) {
+                    // Mobile: Open LinkedIn app
+                    const mobileUrl = `linkedin://profile/${profileId}`;
+                    window.location.href = mobileUrl;
+                    
+                    // Fallback to web if app doesn't open
+                    setTimeout(() => {
+                        window.open(`https://www.linkedin.com/in/${profileId}`, '_blank');
+                    }, 1000);
+                } else {
+                    // Desktop: Open LinkedIn web
+                    window.open(`https://www.linkedin.com/in/${profileId}`, '_blank');
+                }
+            });
+        });
+    }
+    
+    // Initialize LinkedIn links immediately
+    handleLinkedInLinks();
+    // --- End LinkedIn Links ---
+
     // --- WhatsApp FAB visibility (visible on all devices) ---
     function toggleFabVisibility() {
         const fab = document.getElementById('fab-whatsapp');
