@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isMobile) {
                 // WhatsApp for mobile
                 const message = encodeURIComponent('Hola! Me gustaría agendar una consulta con Recruit Partner para conocer más sobre sus servicios de reclutamiento.');
-                const whatsappUrl = `https://wa.me/51989750136?text=${message}`;
+                const whatsappUrl = `https://wa.me/51993296194?text=${message}`;
                 window.open(whatsappUrl, '_blank');
             } else {
                 // Email for desktop
