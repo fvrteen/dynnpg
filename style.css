@@ -778,10 +778,16 @@ section {
     margin: 0;
 }
 
+.member-social-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.member-linkedin,
 .member-instagram {
     width: 35px;
     height: 35px;
-    background: var(--gradient-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -790,6 +796,32 @@ section {
     text-decoration: none;
     transition: var(--transition);
     box-shadow: var(--shadow-light);
+}
+
+.member-linkedin {
+    background: #0077b5;
+}
+
+.member-linkedin-placeholder {
+    background: #6c757d;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.member-linkedin-placeholder:hover {
+    transform: none;
+    box-shadow: var(--shadow-light);
+    opacity: 0.8;
+}
+
+.member-instagram {
+    background: var(--gradient-primary);
+}
+
+.member-linkedin:hover,
+.member-instagram:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
 }
 
 /* Removed hover effect */
@@ -1777,30 +1809,7 @@ html {
         font-size: 1.1rem;
         padding: 12px 0;
     }
-    .fab-whatsapp {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        width: 56px;
-        height: 56px;
-        background: #25d366;
-        color: #fff;
-        border-radius: 50%;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-        z-index: 2000;
-        font-size: 2rem;
-        transition: background 0.2s;
-    }
-    .fab-whatsapp:hover {
-        background: #128c7e;
-        color: #fff;
-    }
-    .fab-whatsapp, .fab-whatsapp:focus, .fab-whatsapp:hover {
-        text-decoration: none !important;
-    }
+    /* WhatsApp button styles moved to base CSS for all devices */
     /* Reduce heavy animations for mobile */
     .floating-shapes, .floating-icon, .hero-background {
         animation: none !important;
@@ -2380,5 +2389,56 @@ html {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
   }
+}
+
+/* Base WhatsApp Button Styles (all devices) */
+.fab-whatsapp {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    z-index: 2000;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.fab-whatsapp:hover {
+    background: #128c7e;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.fab-whatsapp:focus {
+    text-decoration: none;
+}
+
+/* Desktop WhatsApp Button Enhancement */
+@media (min-width: 769px) {
+    .fab-whatsapp {
+        width: 64px;
+        height: 64px;
+        font-size: 2.2rem;
+        bottom: 32px;
+        right: 32px;
+        box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
+    }
+    
+    .fab-whatsapp:hover {
+        transform: scale(1.15);
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+    }
 }
 

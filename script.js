@@ -216,16 +216,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // --- End Swipe gesture ---
 
-    // --- Hide WhatsApp FAB on desktop ---
+    // --- WhatsApp FAB visibility (visible on all devices) ---
     function toggleFabVisibility() {
         const fab = document.getElementById('fab-whatsapp');
         if (!fab) return;
-        if (window.innerWidth > 768) {
-            fab.style.display = 'none';
-        } else {
-            fab.style.display = 'flex';
-        }
+        // Always show WhatsApp button on all devices
+        fab.style.display = 'flex';
+        fab.style.visibility = 'visible';
+        fab.style.opacity = '1';
     }
+    
+    // Ensure button is visible on page load
+    document.addEventListener('DOMContentLoaded', toggleFabVisibility);
     window.addEventListener('resize', toggleFabVisibility);
     toggleFabVisibility();
     // --- End FAB visibility ---
