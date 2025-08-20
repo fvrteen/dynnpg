@@ -799,19 +799,7 @@ section {
 }
 
 .member-linkedin {
-    background: #0077b5;
-}
-
-.member-linkedin-placeholder {
-    background: #6c757d;
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.member-linkedin-placeholder:hover {
-    transform: none;
-    box-shadow: var(--shadow-light);
-    opacity: 0.8;
+    background: var(--gradient-primary);
 }
 
 .member-instagram {
