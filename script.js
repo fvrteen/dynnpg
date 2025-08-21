@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isMobile) {
                 // WhatsApp for mobile
                 const message = encodeURIComponent('Hola! Me gustaría agendar una consulta con Recruit Partner para conocer más sobre sus servicios de reclutamiento.');
-                const whatsappUrl = `https://wa.me/51989750136?text=${message}`;
+                const whatsappUrl = `https://wa.me/51993296194?text=${message}`;
                 window.open(whatsappUrl, '_blank');
             } else {
                 // Email for desktop
@@ -215,6 +215,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     // --- End Swipe gesture ---
+
+    // --- LinkedIn Links - Web on PC, App on Mobile ---
+    function handleLinkedInLinks() {
+        const linkedinLinks = document.querySelectorAll('.linkedin-link');
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        linkedinLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const profileId = this.getAttribute('data-profile');
+                
+                if (isMobile) {
+                    // Mobile: Open LinkedIn app
+                    const mobileUrl = `linkedin://profile/${profileId}`;
+                    window.location.href = mobileUrl;
+                    
+                    // Fallback to web if app doesn't open
+                    setTimeout(() => {
+                        window.open(`https://www.linkedin.com/in/${profileId}`, '_blank');
+                    }, 1000);
+                } else {
+                    // Desktop: Open LinkedIn web
+                    window.open(`https://www.linkedin.com/in/${profileId}`, '_blank');
+                }
+            });
+        });
+    }
+    
+    // Initialize LinkedIn links immediately
+    handleLinkedInLinks();
+    // --- End LinkedIn Links ---
 
     // --- WhatsApp FAB visibility (visible on all devices) ---
     function toggleFabVisibility() {

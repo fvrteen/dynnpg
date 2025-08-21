@@ -799,19 +799,7 @@ section {
 }
 
 .member-linkedin {
-    background: #0077b5;
-}
-
-.member-linkedin-placeholder {
-    background: #6c757d;
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.member-linkedin-placeholder:hover {
-    transform: none;
-    box-shadow: var(--shadow-light);
-    opacity: 0.8;
+    background: var(--gradient-primary);
 }
 
 .member-instagram {
@@ -2085,10 +2073,10 @@ html {
   box-shadow: var(--shadow-medium);
 }
 .contact-social-btn.whatsapp { background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); }
-.contact-social-btn.linkedin { background: linear-gradient(135deg, #0077b5 0%, #123767 100%); }
+.contact-social-btn.tiktok { background: #000000; }
 .contact-social-btn.instagram { background: linear-gradient(135deg, #e1306c 0%, #fdc468 100%); }
 .contact-social-btn.whatsapp:hover { background: linear-gradient(135deg, #128c7e 0%, #25d366 100%); }
-.contact-social-btn.linkedin:hover { background: linear-gradient(135deg, #123767 0%, #0077b5 100%); }
+.contact-social-btn.tiktok:hover { background: #333333; }
 .contact-social-btn.instagram:hover { background: linear-gradient(135deg, #fdc468 0%, #e1306c 100%); }
 
 .contact-card .cta-button-large {
