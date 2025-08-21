@@ -1,5 +1,26 @@
 # Cambios y Mejoras - Recruit Partner
 
+## Cambios Recientes - Reemplazo de LinkedIn por TikTok
+
+### **Actualización de Redes Sociales en Sección de Contacto**
+- **LinkedIn Removido**: ❌ Eliminado el botón de LinkedIn de la sección de contacto
+- **TikTok Añadido**: ✅ Nuevo botón de TikTok con enlace a @recruitpartner
+- **URL TikTok**: `https://www.tiktok.com/@recruitpartner?_t=ZS-8z2w2LwAxnE&_r=1`
+- **Estilos CSS**: Añadidos estilos para botón TikTok con gradiente característico (negro, cyan, rosa)
+
+### **Estilos TikTok Actualizados (Simplificados)**
+- **Fondo Base**: Negro sólido (#000000) - más simple y normal
+- **Efecto Hover**: Gris oscuro (#333333) - transición suave y estándar
+- **Diseño**: Consistente con el estilo de otros botones sociales
+
+### **Instagram de Dayana Comentado**
+- **Estado**: ❌ Comentado temporalmente
+- **Ubicaciones**: 2 enlaces comentados en el perfil de Dayana
+- **Razón**: Solicitud del usuario para ocultar el logo de Instagram
+- **Mantenimiento**: Código preservado en comentarios para futura reactivación
+
+---
+
 ## Análisis Actual - Iconos de WhatsApp y Número de Contacto
 
 ### **Verificación de Iconos WhatsApp - Número: 993296194**
